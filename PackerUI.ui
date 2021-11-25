@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1122</width>
+    <height>825</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DIY Cell Indexer &amp; Repacker By Alex from deepcyclepower.com </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>14</y>
+      <width>1061</width>
+      <height>753</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="cell_indexing">
+     <attribute name="title">
+      <string>Cell Indexing</string>
+     </attribute>
+     <widget class="QPlainTextEdit" name="query_list_display_text">
+      <property name="geometry">
+       <rect>
+        <x>14</x>
+        <y>597</y>
+        <width>949</width>
+        <height>96</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="available_cells">
+      <property name="geometry">
+       <rect>
+        <x>14</x>
+        <y>63</y>
+        <width>947</width>
+        <height>509</height>
+       </rect>
+      </property>
+      <property name="rowCount">
+       <number>0</number>
+      </property>
+      <property name="columnCount">
+       <number>8</number>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>100</number>
+      </attribute>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+     </widget>
+     <widget class="QLineEdit" name="min_cap">
+      <property name="geometry">
+       <rect>
+        <x>575</x>
+        <y>4</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>112</x>
+        <y>4</y>
+        <width>83</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>IR</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="max_cap">
+      <property name="geometry">
+       <rect>
+        <x>575</x>
+        <y>34</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>5000</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="load_all_cells">
+      <property name="geometry">
+       <rect>
+        <x>655</x>
+        <y>4</y>
+        <width>75</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Load Cells</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>14</x>
+        <y>17</y>
+        <width>451</width>
+        <height>37</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLineEdit" name="capacity">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="esr">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="voltage">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="device">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="add_cell">
+         <property name="text">
+          <string>Add Cell</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_52">
+      <property name="geometry">
+       <rect>
+        <x>525</x>
+        <y>9</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Min. Cap:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>14</x>
+        <y>7</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Capacity</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>204</x>
+        <y>7</y>
+        <width>46</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Voltage</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="total_loaded_cells">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>39</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Loaded: 0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_53">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>34</y>
+        <width>51</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Max. Cap:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>296</x>
+        <y>4</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Device Name</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="print_labels">
+      <property name="geometry">
+       <rect>
+        <x>886</x>
+        <y>32</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Print Labels</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pack_creation">
+     <attribute name="title">
+      <string>Pack Creation</string>
+     </attribute>
+     <widget class="QTableWidget" name="indexed_cells">
+      <property name="geometry">
+       <rect>
+        <x>14</x>
+        <y>62</y>
+        <width>947</width>
+        <height>509</height>
+       </rect>
+      </property>
+      <property name="rowCount">
+       <number>0</number>
+      </property>
+      <property name="columnCount">
+       <number>8</number>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>100</number>
+      </attribute>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+     </widget>
+     <widget class="QLineEdit" name="cell_uuid">
+      <property name="geometry">
+       <rect>
+        <x>14</x>
+        <y>30</y>
+        <width>169</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>14</x>
+        <y>12</y>
+        <width>63</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cell UUID</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="add_cell_pack">
+      <property name="geometry">
+       <rect>
+        <x>196</x>
+        <y>28</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add Cell</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="remove_indexed_items">
+      <property name="geometry">
+       <rect>
+        <x>870</x>
+        <y>30</y>
+        <width>89</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Remove Items</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="info_box">
+      <property name="geometry">
+       <rect>
+        <x>376</x>
+        <y>30</y>
+        <width>309</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>12</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Info</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1122</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
