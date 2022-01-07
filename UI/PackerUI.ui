@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1122</width>
-    <height>825</height>
+    <width>1255</width>
+    <height>865</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="cell_indexing">
      <attribute name="title">
@@ -257,6 +257,16 @@
        <string>Print Labels</string>
       </property>
      </widget>
+     <widget class="QComboBox" name="printerModel">
+      <property name="geometry">
+       <rect>
+        <x>780</x>
+        <y>32</y>
+        <width>97</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pack_creation">
      <attribute name="title">
@@ -268,7 +278,7 @@
         <x>14</x>
         <y>62</y>
         <width>947</width>
-        <height>509</height>
+        <height>361</height>
        </rect>
       </property>
       <property name="rowCount">
@@ -370,7 +380,198 @@
        <string>Info</string>
       </property>
      </widget>
+     <widget class="QLineEdit" name="series">
+      <property name="geometry">
+       <rect>
+        <x>18</x>
+        <y>456</y>
+        <width>53</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="parallel">
+      <property name="geometry">
+       <rect>
+        <x>88</x>
+        <y>456</y>
+        <width>53</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>438</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Series</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>438</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Parallel</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="calculate">
+      <property name="geometry">
+       <rect>
+        <x>154</x>
+        <y>454</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Calculate</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="series_2">
+      <property name="geometry">
+       <rect>
+        <x>312</x>
+        <y>456</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="series_3">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>456</y>
+        <width>65</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="series_4">
+      <property name="geometry">
+       <rect>
+        <x>492</x>
+        <y>456</y>
+        <width>65</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>312</x>
+        <y>438</y>
+        <width>83</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nominal Voltage</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>414</x>
+        <y>438</y>
+        <width>83</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Amp Hours</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>494</x>
+        <y>438</y>
+        <width>83</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Watt Hours</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="result_cells">
+      <property name="geometry">
+       <rect>
+        <x>16</x>
+        <y>486</y>
+        <width>945</width>
+        <height>233</height>
+       </rect>
+      </property>
+      <property name="rowCount">
+       <number>0</number>
+      </property>
+      <property name="columnCount">
+       <number>4</number>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>100</number>
+      </attribute>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+     </widget>
     </widget>
+   </widget>
+   <widget class="QLabel" name="banner">
+    <property name="geometry">
+     <rect>
+      <x>1094</x>
+      <y>8</y>
+      <width>147</width>
+      <height>763</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string extracomment="Visit our store on deepcyclepower.com"/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resourcelist.qrc">:/deepcyclepower_banner.png</pixmap>
+    </property>
+    <property name="openExternalLinks">
+     <bool>true</bool>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -378,13 +579,15 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1122</width>
-     <height>21</height>
+     <width>1255</width>
+     <height>20</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="resourcelist.qrc"/>
+ </resources>
  <connections/>
 </ui>

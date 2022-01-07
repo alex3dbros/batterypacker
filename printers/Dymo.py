@@ -12,7 +12,7 @@ else:
     # unfrozen
     curdir = path.dirname(path.abspath(__file__))
 
-mylabel = path.join(curdir, 'labeltemplates\Dymo\qr-11353.label')
+mylabel = path.join(curdir, '../labeltemplates/Dymo/qr-11353.label')
 window = Tk()
 window.wm_withdraw()
 
@@ -34,12 +34,10 @@ def print_label(cells):
 
             if len(batch) == 2:
                 cap1_string = batch[0]["id"] + "-C:" + str(batch[0]["capacity"])
-                etvm1_string = "E:" + str(batch[0]["esr"]) + "\n" + "V:" + str(batch[0]["voltage"]) + "\n" + batch[0][
-                    "device"]
+                etvm1_string = "E:" + str(batch[0]["esr"]) + "\n" + "V:" + str(batch[0]["voltage"]) + "\n" + batch[0]["device"]
 
                 cap2_string = batch[1]["id"] + "-C:" + str(batch[1]["capacity"])
-                etvm2_string = "E:" + str(batch[1]["esr"]) + "\n" + "V:" + str(batch[1]["voltage"]) + "\n" + batch[1][
-                    "device"]
+                etvm2_string = "E:" + str(batch[1]["esr"]) + "\n" + "V:" + str(batch[1]["voltage"]) + "\n" + batch[1]["device"]
 
                 try:
                     labelCom = Dispatch('Dymo.DymoAddIn')

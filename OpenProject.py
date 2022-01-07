@@ -5,7 +5,7 @@ from qtpy.QtWidgets import QApplication, QMainWindow, QMessageBox, QAction, QDia
 import sql as Connection
 import Db_Actions as DbAct
 import info as info
-open_project_UI = join(dirname(abspath(__file__)), 'OpenProject.ui')
+open_project_UI = join(dirname(abspath(__file__)), 'UI/OpenProject.ui')
 
 
 class OpenProject(QDialog):

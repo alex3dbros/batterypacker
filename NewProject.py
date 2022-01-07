@@ -7,7 +7,7 @@ from sqlalchemy.sql import func
 import Db_Actions as DbAct
 import info as info
 
-new_project_UI = join(dirname(abspath(__file__)), 'NewProject.ui')
+new_project_UI = join(dirname(abspath(__file__)), 'UI/NewProject.ui')
 
 
 class NewProject(QDialog):

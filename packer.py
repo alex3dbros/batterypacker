@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QDialog, QTableWidgetItem, QAction
-from PyQt5 import uic
-from qtpy.QtCore import Slot, QTimer
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QTableWidgetItem, QAction
+from PyQt5 import uic, QtGui
+from qtpy.QtCore import Slot
 import sys
 from os.path import join, dirname, abspath
 import qtmodern.styles
@@ -10,9 +10,13 @@ import OpenProject
 import Db_Actions as DbAct
 import info as info
 import helpers as h
-import printlabel_dymo as dymo
+from printers import Dymo as dymo
+from printers import Phomemo as phomemo
+import asyncio
+from bleak import BleakScanner
+import webbrowser
 
-_UI = join(dirname(abspath(__file__)), 'PackerUI.ui')
+_UI = join(dirname(abspath(__file__)), 'UI/PackerUI.ui')
 
 
 class MainWindow(QMainWindow):
@@ -47,6 +51,11 @@ class MainWindow(QMainWindow):
         saveAction.setStatusTip('Save Settings')
         # saveAction.triggered.connect(functools.partial(self.db_send_action, "save_settings"))
 
+        # Printer Models
+        self.printer_model = self.widget.printerModel
+        self.printer_model.addItems(['Dymo450'])
+        self.phomemo_printers = []
+
         # Scan Action
         self.lineedit = self.widget.cell_uuid
         self.lineedit.returnPressed.connect(self.add_cell_pack_pressed)
@@ -61,6 +70,14 @@ class MainWindow(QMainWindow):
         table.setHorizontalHeaderLabels(['UUID', 'Project', 'Capacity', 'Voltage', 'ESR', 'Added', 'Available',
                                          'Device'])
 
+        self.widget.result_cells.setHorizontalHeaderLabels(['Cell Number', 'Capacity', 'Required Cells', 'Scanned Cells'])
+
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(self.run())
+
+        self.preview = QtGui.QPixmap(join(dirname(abspath(__file__)), "UI/deepcyclepower_banner.png"))
+        self.widget.banner.setPixmap(self.preview)
+        self.widget.banner.mousePressEvent = self.open_deepcycle_power
 
     @Slot()
     def on_load_all_cells_clicked(self):
@@ -98,8 +115,21 @@ class MainWindow(QMainWindow):
             device = table.item(row, 7).text()
             cells.append({"uuid": uuid, "id": id, "capacity": capacity, "esr": esr, "voltage": voltage,
                           "device": device})
-        dymo.print_label(cells)
 
+        if self.printer_model.currentText() == "Dymo450":
+            dymo.print_label(cells)
+        elif self.printer_model.currentText().startswith("Q119"):
+            if len(self.phomemo_printers) > 0:
+                printer_address = ""
+
+                for d in self.phomemo_printers:
+                    if d.name == self.printer_model.currentText():
+                        printer_address = d.address
+
+                if printer_address != "":
+                    phomemo.print_label(cells, printer_address)
+                else:
+                    "Error : Printer Not found"
 
     @Slot()
     def on_add_cell_pack_clicked(self):
@@ -111,12 +141,14 @@ class MainWindow(QMainWindow):
         self.delete_selected(table)
         print("Deleted Items")
 
+    def open_deepcycle_power(self, event):
+        webbrowser.open('https://www.deepcyclepower.com/?utm_source=app&utm_medium=app&utm_campaign=packer1&utm_id=packerapp&utm_term=packer')
+
     def add_cell_pack_pressed(self):
         uuid = getattr(self.widget, "cell_uuid").text()
         cell_data = DbAct.get_gell_data(uuid)
         print(cell_data)
         self.add_cell_to_pack(cell_data)
-
 
     def validate_number(self, number):
         try:
@@ -192,6 +224,11 @@ class MainWindow(QMainWindow):
         self.widget.total_loaded_cells.setText("Loaded: %s" % len(cells_info))
         self.widget.query_list_display_text.setPlainText(', '.join(str(x) for x in cell_capacities))
 
+    def add_cell_pack_result(self):
+        table = self.widget.result_cells
+        existing_uuids = []
+        self.widget.result_cells.setHorizontalHeaderLabels(
+            ['Cell Number' 'Capacity', 'Cells'])
 
     def delete_selected(self, table):
         selected = table.selectedItems()
@@ -206,7 +243,6 @@ class MainWindow(QMainWindow):
         for row in reversed(rows):
             table.removeRow(row)
 
-
     def new_project(self):
         print("New project")
         newProjectWindow = qtmodern.windows.ModernWindow(NewProject.NewProject(mw))
@@ -218,6 +254,15 @@ class MainWindow(QMainWindow):
         openProjectWindow = qtmodern.windows.ModernWindow(OpenProject.OpenProject(mw))
         openProjectWindow.show()
 
+    async def run(self):
+        devices = await BleakScanner.discover()
+        self.phomemo_printers = []
+        for d in devices:
+            if d.name.startswith("Q119"):
+                self.phomemo_printers.append(d)
+                print("Detected Printer %s, %s" % (d.name, d.address))
+                self.printer_model.addItem(d.name)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
@@ -226,7 +271,6 @@ if __name__ == '__main__':
     mw_class_instance = MainWindow()
 
     mw = qtmodern.windows.ModernWindow(mw_class_instance)
-
 
     mw.show()
     sys.exit(app.exec_())
