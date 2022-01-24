@@ -35,3 +35,25 @@ def get_cells_capacity(capacities_dict):
 
     return cap_list
 
+
+def calculate_pack(cells, s, p):
+    count = s * p
+    available = sorted(cells, key=lambda b: int(b['capacity']), reverse=True)[:count]
+
+    paralel_series = []
+    for i in range(s):
+        paralel_series.append([])
+        for j in range(p):
+            paralel_series[i].append(available[i + s * j])
+
+    pack = dict()
+    cell = 1
+    for par in paralel_series:
+        pack[cell] = []
+        for unit in par:
+            pack[cell].append(unit)
+            # print(unit)
+
+        cell += 1
+
+    return pack

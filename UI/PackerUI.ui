@@ -325,19 +325,6 @@
        <string>Cell UUID</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="add_cell_pack">
-      <property name="geometry">
-       <rect>
-        <x>196</x>
-        <y>28</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add Cell</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="remove_indexed_items">
       <property name="geometry">
        <rect>
@@ -457,6 +444,9 @@
       <property name="text">
        <string/>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QLineEdit" name="series_3">
       <property name="geometry">
@@ -470,6 +460,9 @@
       <property name="text">
        <string/>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QLineEdit" name="series_4">
       <property name="geometry">
@@ -482,6 +475,9 @@
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="label_9">
@@ -536,7 +532,7 @@
        <number>0</number>
       </property>
       <property name="columnCount">
-       <number>4</number>
+       <number>3</number>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>100</number>
@@ -544,7 +540,61 @@
       <column/>
       <column/>
       <column/>
-      <column/>
+     </widget>
+     <widget class="QLineEdit" name="cell_uuid_pack_creation">
+      <property name="geometry">
+       <rect>
+        <x>674</x>
+        <y>456</y>
+        <width>169</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>674</x>
+        <y>436</y>
+        <width>63</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cell UUID</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="position_in_pack">
+      <property name="geometry">
+       <rect>
+        <x>862</x>
+        <y>454</y>
+        <width>93</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>862</x>
+        <y>434</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Position</string>
+      </property>
      </widget>
     </widget>
    </widget>
@@ -567,7 +617,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resourcelist.qrc">:/deepcyclepower_banner.png</pixmap>
+     <pixmap>:/deepcyclepower_banner.png</pixmap>
     </property>
     <property name="openExternalLinks">
      <bool>true</bool>
@@ -586,8 +636,6 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources>
-  <include location="resourcelist.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

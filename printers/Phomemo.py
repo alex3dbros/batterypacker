@@ -80,16 +80,30 @@ def print_label(cells, printer_address):
 
 def send_to_printer(serial_number, capacity, esr, charge_volt, dev_name, qr_content, printer_address):
     printer = Phomemo(bluetooth_address=printer_address, channel=1)
-    phomemo_label = Image.open("../labeltemplates/phomemo_blank_30x20.jpg")
+    try:
+        phomemo_label = Image.open("../labeltemplates/phomemo_blank_30x20.jpg")
+        header_font = ImageFont.truetype('../labeltemplates/fonts/OpenSans-Bold.ttf', 62)
+        left_values_font = ImageFont.truetype('../labeltemplates/fonts/OpenSans-Regular.ttf', 42)
+    except:
+        print("Labeltemplates not found, probably running from source code, will try again")
+
+    try:
+        phomemo_label = Image.open("labeltemplates/phomemo_blank_30x20.jpg")
+        header_font = ImageFont.truetype('labeltemplates/fonts/OpenSans-Bold.ttf', 62)
+        left_values_font = ImageFont.truetype('labeltemplates/fonts/OpenSans-Regular.ttf', 42)
+    except:
+        print("Labeltemplates not found")
+
+
     label_editable = ImageDraw.Draw(phomemo_label)
 
     # The header content and font
-    header_font = ImageFont.truetype('../labeltemplates/fonts/OpenSans-Bold.ttf', 62)
+
     header_text = "%s-C:%s" % (serial_number, capacity)
     label_editable.text((9, 0), header_text, (0, 0, 0), font=header_font)
 
     # Left Values E: (Internal Resistance); Discharge Voltage, Store Voltage, Charge Voltage ; Device Name used for testing
-    left_values_font = ImageFont.truetype('../labeltemplates/fonts/OpenSans-Regular.ttf', 42)
+
     left_values = "E: %s\n%s\nDev:%s" % (esr, charge_volt, dev_name)
     label_editable.text((9, 100), left_values, (0, 0, 0), font=left_values_font)
 
