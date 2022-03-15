@@ -180,10 +180,10 @@ def get_gell_data(uuid):
 
                 return cell_data
             else:
-                return "Cell In Use"
+                return "NA"
 
         else:
-            return "None"
+            return None
 
     else:
-        return "None"
+        return None

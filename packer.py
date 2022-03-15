@@ -15,6 +15,7 @@ from printers import Phomemo as phomemo
 import asyncio
 from bleak import BleakScanner
 import webbrowser
+from utils import *
 
 _UI = join(dirname(abspath(__file__)), 'UI/PackerUI.ui')
 
@@ -187,7 +188,15 @@ class MainWindow(QMainWindow):
     def add_cell_to_pack_pressed(self):
         uuid = getattr(self.widget, "cell_uuid").text()
         cell_data = DbAct.get_gell_data(uuid)
-        self.add_cell_to_pool(cell_data)
+
+        if cell_data is not None and cell_data != "NA":
+            self.add_cell_to_pool(cell_data)
+        elif cell_data is None:
+            cell_data = uuid_decode(uuid)
+            if cell_data is not None:
+                self.add_cell_to_pool(cell_data)
+        else:
+            print("Cell UUID is not Valid")
 
     def validate_number(self, number):
         try:
