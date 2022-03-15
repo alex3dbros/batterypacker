@@ -12,7 +12,7 @@ else:
     # unfrozen
     curdir = path.dirname(path.abspath(__file__))
 
-mylabel = path.join(curdir, '../labeltemplates/Dymo/qr-11353.label')
+mylabel = path.join(curdir, 'labeltemplates/Dymo/qr-11353.label')
 window = Tk()
 window.wm_withdraw()
 

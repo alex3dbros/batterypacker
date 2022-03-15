@@ -80,19 +80,11 @@ def print_label(cells, printer_address):
 
 def send_to_printer(serial_number, capacity, esr, charge_volt, dev_name, qr_content, printer_address):
     printer = Phomemo(bluetooth_address=printer_address, channel=1)
-    try:
-        phomemo_label = Image.open("../labeltemplates/phomemo_blank_30x20.jpg")
-        header_font = ImageFont.truetype('../labeltemplates/fonts/OpenSans-Bold.ttf', 62)
-        left_values_font = ImageFont.truetype('../labeltemplates/fonts/OpenSans-Regular.ttf', 42)
-    except:
-        print("Labeltemplates not found, probably running from source code, will try again")
 
-    try:
-        phomemo_label = Image.open("labeltemplates/phomemo_blank_30x20.jpg")
-        header_font = ImageFont.truetype('labeltemplates/fonts/OpenSans-Bold.ttf', 62)
-        left_values_font = ImageFont.truetype('labeltemplates/fonts/OpenSans-Regular.ttf', 42)
-    except:
-        print("Labeltemplates not found")
+    phomemo_label = Image.open("labeltemplates/phomemo_blank_30x20.jpg")
+    header_font = ImageFont.truetype('labeltemplates/fonts/OpenSans-Bold.ttf', 62)
+    left_values_font = ImageFont.truetype('labeltemplates/fonts/OpenSans-Regular.ttf', 42)
+
 
 
     label_editable = ImageDraw.Draw(phomemo_label)
