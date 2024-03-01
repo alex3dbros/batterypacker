@@ -193,6 +193,7 @@ class MainWindow(QMainWindow):
             self.add_cell_to_pool(cell_data)
         elif cell_data is None:
             cell_data = uuid_decode(uuid)
+            print(cell_data)
             if cell_data is not None:
                 self.add_cell_to_pool(cell_data)
         else:
